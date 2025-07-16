@@ -28,13 +28,17 @@ export default function AdminBilling() {
     { invoiceId: 'INV009', patientName: 'Lucas Martinez', amount: '$140.00', dateIssued: '2025-06-21', status: 'Pending' },
     { invoiceId: 'INV010', patientName: 'Sophia Lee', amount: '$90.00', dateIssued: '2025-06-20', status: 'Overdue' },
     { invoiceId: 'INV011', patientName: 'Elijah Brown', amount: '$180.00', dateIssued: '2025-06-19', status: 'Paid' },
-
   ];
+
+  const statusColorMap = {
+    Paid: 'text-green-600',
+    Pending: 'text-yellow-600',
+    Overdue: 'text-red-600',
+  };
 
   return (
     <div className="flex h-screen bg-gray-100 font-roboto">
       <AdminSidebar active="Billing" />
-
       <div className="flex-1 flex flex-col">
         <AdminTopBar user={{ name: 'Lexy' }} />
 
@@ -71,7 +75,7 @@ export default function AdminBilling() {
             </button>
           </div>
 
-          <DataTable columns={columns} rows={rows} />
+          <DataTable columns={columns} rows={rows} statusColorMap={statusColorMap} />
         </div>
       </div>
     </div>

@@ -9,17 +9,23 @@ import AdminReports from './pages/admin/AdminReports';
 import AdminUserManagement from './pages/admin/AdminUserManagement';
 import AdminSystemSettings from './pages/admin/AdminSystemSettings';
 import AdminResourceManagement from './pages/admin/AdminResourceManagement';
-//import AdminLogout from './pages/admin/AdminLogout'; // Assuming you have this page
 import AdminOperatingHours from './pages/admin/AdminOperatingHours';
 import RolePermissions from './pages/admin/AdminRolePermissions';  
 import AdminFinancialReports from './pages/admin/AdminFinancialReports';
 import AdminStaffPerformanceReport from './pages/admin/AdminStaffPerformanceReport'; 
-import AdminBilling from './pages/admin/AdminBilling'; // Assuming you have this page
+import AdminBilling from './pages/admin/AdminBilling';
 // Patient pages
 import PatientDashboard from './pages/patient/PatientDashboard';
+import PatientAppointmentHistory from './pages/patient/PatientAppointmentHistory';
+import PatientBookAppointment from './pages/patient/PatientBookAppointment';
+import PatientMedicalHistory from './pages/patient/PatientMedicalHistory';
+
 
 // Doctor pages
 import DoctorDashboard from './pages/doctor/DoctorDashboard';
+import DoctorManageAppointments from './pages/doctor/DoctorManageAppointments';
+import DoctorPatientRecords from './pages/doctor/DoctorPatientRecords';
+import DoctorPrescribeMedication from './pages/doctor/DoctorPrescribeMedications.';
 
 function App() {
   return (
@@ -42,15 +48,19 @@ function App() {
       <Route path="/admin/billing" element={<AdminBilling />} />
 
 
-
-
-
       {/* Patient Routes */}
       <Route path="/patient/dashboard" element={<PatientDashboard />} />
+      <Route path="/patient/history" element={<PatientAppointmentHistory />} />
+      <Route path="/patient/records" element={<PatientMedicalHistory />} />
+      <Route path="/patient/book" element={<PatientBookAppointment />} />
 
       {/* Doctor Routes */}
       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-
+      <Route path="/doctor/appointments" element={<DoctorManageAppointments />} />
+      <Route path="/doctor/records" element={<DoctorPatientRecords />} />
+      <Route path="/doctor/prescriptions" element={<DoctorPrescribeMedication />} />
+      
+      
       {/* 404 - Not Found Route (Optional) */}
       <Route path="*" element={<div style={{ padding: '2rem' }}><h1>404 - Page Not Found</h1></div>} />
     </Routes>

@@ -1,31 +1,22 @@
+// src/components/DoctorSidebar.jsx
 import React from 'react';
+import { Home, CalendarDays, FileText, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Home,
-  Users,
-  Settings,
-  BarChart,
-  FileText,
-  LogOut,
-  CreditCard,
-} from 'lucide-react';
 import Logo from './logo';
 
-export default function AdminSidebar({ active = '' }) {
+export default function DoctorSidebar({ active = '' }) {
   const navigate = useNavigate();
 
   const navItems = [
-    { label: 'Dashboard', icon: <Home size={16} />, to: '/admin/dashboard' },
-    { label: 'User Management', icon: <Users size={16} />, to: '/admin/users' },
-    { label: 'System Settings', icon: <Settings size={16} />, to: '/admin/settings' },
-    { label: 'Reports', icon: <BarChart size={16} />, to: '/admin/reports' },
-    { label: 'Resource Management', icon: <FileText size={16} />, to: '/admin/resources' },
-    { label: 'Billing', icon: <CreditCard size={16} />, to: '/admin/billing' },
+    { label: 'Dashboard', icon: <Home size={16} />, to: '/doctor/dashboard' },
+    { label: 'Appointments', icon: <CalendarDays size={16} />, to: '/doctor/appointments' },
+    { label: 'Patient Records', icon: <FileText size={16} />, to: '/doctor/records' },
+    { label: 'Prescribe Medication', icon: <FileText size={16} />, to: '/doctor/prescriptions' },
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken'); // Clear any saved authentication token
-    navigate('/admin/login'); // Redirect to login page
+    localStorage.removeItem('authToken');
+    navigate('/doctor/login');
   };
 
   return (
@@ -56,4 +47,4 @@ export default function AdminSidebar({ active = '' }) {
       </nav>
     </aside>
   );
-}
+} 
