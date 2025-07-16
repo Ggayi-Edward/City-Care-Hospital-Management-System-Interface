@@ -44,9 +44,7 @@ button {
 }
 
 /* Optional hover/focus effects if you need custom ones */
-button:hover {
-  /* Tailwind's hover:bg-* should be used instead */
-}
+/* Tailwind's hover:bg-* should be used instead */
 button:focus,
 button:focus-visible {
   outline: 2px solid #646cff;

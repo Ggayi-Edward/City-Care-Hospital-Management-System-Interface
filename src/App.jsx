@@ -27,6 +27,12 @@ import DoctorManageAppointments from './pages/doctor/DoctorManageAppointments';
 import DoctorPatientRecords from './pages/doctor/DoctorPatientRecords';
 import DoctorPrescribeMedication from './pages/doctor/DoctorPrescribeMedications.';
 
+// Receptionist pages
+import ReceptionistDashboard from './pages/Receptionist/ReceptionistDashboard'; 
+import ReceptionistRegisterPatient from './pages/receptionist/ReceptionRegisterPatient';
+import ReceptionistBookAppointment from './pages/receptionist/ReceptionistBookAppointment';
+
+
 function App() {
   return (
     <Routes>
@@ -59,6 +65,12 @@ function App() {
       <Route path="/doctor/appointments" element={<DoctorManageAppointments />} />
       <Route path="/doctor/records" element={<DoctorPatientRecords />} />
       <Route path="/doctor/prescriptions" element={<DoctorPrescribeMedication />} />
+
+      {/* Receptionist */}
+      <Route path="/receptionist/dashboard" element={<ReceptionistDashboard />} />
+      <Route path="/receptionist/register" element={<ReceptionistRegisterPatient />} />
+      <Route path="/receptionist/book" element={<ReceptionistBookAppointment />} />
+      <Route path="/receptionist/appointments" element={<ReceptionistBookAppointment />} />
       
       
       {/* 404 - Not Found Route (Optional) */}
