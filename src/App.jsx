@@ -32,6 +32,8 @@ import ReceptionistDashboard from './pages/Receptionist/ReceptionistDashboard';
 import ReceptionistRegisterPatient from './pages/receptionist/ReceptionRegisterPatient';
 import ReceptionistBookAppointment from './pages/receptionist/ReceptionistBookAppointment';
 
+// Pharmacist pages
+import PharmacistDashboard from './pages/pharmacist/PharmacistDashboard';
 
 function App() {
   return (
@@ -72,7 +74,8 @@ function App() {
       <Route path="/receptionist/book" element={<ReceptionistBookAppointment />} />
       <Route path="/receptionist/appointments" element={<ReceptionistBookAppointment />} />
       
-      
+      {/* Pharmacist Routes */}
+      <Route path="/pharmacist/dashboard" element={<PharmacistDashboard />} />
       {/* 404 - Not Found Route (Optional) */}
       <Route path="*" element={<div style={{ padding: '2rem' }}><h1>404 - Page Not Found</h1></div>} />
     </Routes>
