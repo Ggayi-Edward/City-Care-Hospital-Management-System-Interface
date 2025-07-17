@@ -14,12 +14,12 @@ import RolePermissions from './pages/admin/AdminRolePermissions';
 import AdminFinancialReports from './pages/admin/AdminFinancialReports';
 import AdminStaffPerformanceReport from './pages/admin/AdminStaffPerformanceReport'; 
 import AdminBilling from './pages/admin/AdminBilling';
+
 // Patient pages
 import PatientDashboard from './pages/patient/PatientDashboard';
 import PatientAppointmentHistory from './pages/patient/PatientAppointmentHistory';
 import PatientBookAppointment from './pages/patient/PatientBookAppointment';
 import PatientMedicalHistory from './pages/patient/PatientMedicalHistory';
-
 
 // Doctor pages
 import DoctorDashboard from './pages/doctor/DoctorDashboard';
@@ -34,6 +34,9 @@ import ReceptionistBookAppointment from './pages/receptionist/ReceptionistBookAp
 
 // Pharmacist pages
 import PharmacistDashboard from './pages/pharmacist/PharmacistDashboard';
+import PharmacistManagePrescriptions from './pages/pharmacist/PharmacistManagePrescriptions';
+import PharmacistViewPrescriptionHistory from './pages/pharmacist/PharmacistViewPrescriptionHistory';
+import PharmacistManageInventory from './pages/pharmacist/PharmacistManageInventory';
 
 function App() {
   return (
@@ -55,7 +58,6 @@ function App() {
       <Route path="/admin/reports/staff-performance" element={<AdminStaffPerformanceReport />} />
       <Route path="/admin/billing" element={<AdminBilling />} />
 
-
       {/* Patient Routes */}
       <Route path="/patient/dashboard" element={<PatientDashboard />} />
       <Route path="/patient/history" element={<PatientAppointmentHistory />} />
@@ -76,6 +78,10 @@ function App() {
       
       {/* Pharmacist Routes */}
       <Route path="/pharmacist/dashboard" element={<PharmacistDashboard />} />
+      <Route path="/pharmacist/prescriptions" element={<PharmacistManagePrescriptions />} />
+      <Route path="/pharmacist/history" element={<PharmacistViewPrescriptionHistory />} />
+      <Route path="/pharmacist/inventory" element={<PharmacistManageInventory />} />
+
       {/* 404 - Not Found Route (Optional) */}
       <Route path="*" element={<div style={{ padding: '2rem' }}><h1>404 - Page Not Found</h1></div>} />
     </Routes>
