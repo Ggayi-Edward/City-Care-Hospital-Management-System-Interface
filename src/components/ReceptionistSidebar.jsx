@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, FilePenLine, CalendarPlus, LogOut } from 'lucide-react';
+import { Home, CalendarPlus, FilePenLine, LogOut, DollarSign } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Logo from './logo';
 
@@ -10,40 +10,59 @@ export default function ReceptionistSidebar({ active = '' }) {
     { label: 'Dashboard', icon: <Home size={16} />, to: '/receptionist/dashboard' },
     { label: 'Register patients', icon: <FilePenLine size={16} />, to: '/receptionist/register' },
     { label: 'Book appointment', icon: <CalendarPlus size={16} />, to: '/receptionist/book' },
-    
+    { label: 'Payments', icon: <DollarSign size={16} />, to: '/receptionist/payments' }, // ✅ New item
   ];
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
-    navigate('/admin/login');
+    navigate('/landingpage/citycare');
   };
 
   return (
-    <aside className="w-64 bg-[#4f91a6] text-white flex flex-col px-6 pt-12">
-      <div className="mb-10 text-center">
-        <Logo center />
+    <aside className="w-64 h-screen sticky top-0 bg-gradient-to-b from-[#4f91a6] to-[#3a7386] text-white flex flex-col shadow-xl overflow-y-auto">
+
+      {/* Header */}
+      <div className="px-8 py-8 border-b border-white/10">
+        <div className="text-center">
+          <Logo center />
+        </div>
       </div>
 
-      <nav className="flex flex-col gap-4 text-sm font-medium">
-        {navItems.map((item) => (
-          <button
-            key={item.label}
-            onClick={() => navigate(item.to)}
-            className={`flex items-center gap-3 p-2 rounded ${
-              active === item.label ? 'bg-[#3a7386]' : 'hover:bg-[#3a7386]'
-            }`}
-          >
-            {item.icon} {item.label}
-          </button>
-        ))}
+      {/* Navigation */}
+      <nav className="flex-1 px-0 py-6 overflow-hidden">
+        <div className="space-y-1">
+          {navItems.map((item) => {
+            const isActive = active === item.label;
+            return (
+              <button
+                key={item.label}
+                onClick={() => navigate(item.to)}
+                className={`relative flex items-center gap-3 w-full px-6 py-3.5 text-left transition-all duration-300 ease-in-out
+                  ${isActive
+                    ? 'bg-white/25 text-white font-semibold shadow-md'
+                    : 'text-white/90 hover:bg-white/10 hover:text-white'}`}
+              >
+                {isActive && (
+                  <span className="absolute left-0 top-0 h-full w-1 bg-white rounded-r"></span>
+                )}
+                <div className="flex-shrink-0">{item.icon}</div>
+                <span className="font-medium">{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
 
+      {/* Logout */}
+      <div className="mt-auto w-full overflow-hidden">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 hover:bg-red-500 text-red-100 mt-auto p-2 rounded"
+          className="flex items-center gap-3 w-full px-6 py-3.5 bg-white/25 text-white font-semibold shadow-md transition-colors duration-200 hover:bg-white/30"
         >
-          <LogOut size={16} /> Logout
+          <LogOut size={20} />
+          <span>Logout</span>
         </button>
-      </nav>
+      </div>
     </aside>
   );
-} 
+}

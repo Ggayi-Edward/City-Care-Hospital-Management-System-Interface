@@ -57,15 +57,6 @@ export default function AdminReports() {
               onChange={(e) => setFromDate(e.target.value)}
               className="border px-3 py-1 rounded text-sm"
             />
-
-            <input
-              placeholder="To"
-              type="date"
-              value={toDate}
-              onChange={(e) => setToDate(e.target.value)}
-              className="border px-3 py-1 rounded text-sm"
-            />
-
             <button className="bg-[#4f91a6] text-white px-4 py-1 rounded text-sm hover:bg-[#3a7386]">
               Apply Filters
             </button>

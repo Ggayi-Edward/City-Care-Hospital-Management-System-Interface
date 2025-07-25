@@ -35,7 +35,7 @@ export default function EditUserForm({ user, onSave, onCancel }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg max-h-[90vh] overflow-y-auto p-6">
         <h2 className="text-xl font-semibold mb-4">Edit User</h2>
 
         {error && <div className="text-red-600 mb-3">{error}</div>}
@@ -163,3 +163,4 @@ export default function EditUserForm({ user, onSave, onCancel }) {
     </div>
   );
 }
+

@@ -28,9 +28,9 @@ export default function AdminRolePermissions() {
           <nav className="flex space-x-2 items-center">
             <button onClick={() => navigate('/admin/dashboard')} className="hover:underline text-blue-600">Admin Dashboard</button>
             <span>/</span>
-            <button onClick={() => navigate('/admin/reports')} className="hover:underline text-blue-600">Reports Dashboard</button>
+            <button onClick={() => navigate('/admin/system settings')} className="hover:underline text-blue-600">System Settings</button>
             <span>/</span>
-            <span className="text-gray-500">System Settings</span>
+            <span className="text-gray-500">Role Permissions</span>
           </nav>
         </div>
 

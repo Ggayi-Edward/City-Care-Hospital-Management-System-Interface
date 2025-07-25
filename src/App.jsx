@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-
+//Landing Page
+import LandingPage from './pages/landingpage/LandingPage';
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -15,35 +16,43 @@ import AdminFinancialReports from './pages/admin/AdminFinancialReports';
 import AdminStaffPerformanceReport from './pages/admin/AdminStaffPerformanceReport'; 
 import AdminBilling from './pages/admin/AdminBilling';
 
+
 // Patient Pages
 import PatientDashboard from './pages/patient/PatientDashboard';
 import PatientAppointmentHistory from './pages/patient/PatientAppointmentHistory';
 import PatientBookAppointment from './pages/patient/PatientBookAppointment';
 import PatientMedicalHistory from './pages/patient/PatientMedicalHistory';
+import PatientLogin from './pages/patient/PatientLogin';
+
 
 // Doctor Pages
 import DoctorDashboard from './pages/doctor/DoctorDashboard';
 import DoctorManageAppointments from './pages/doctor/DoctorManageAppointments';
 import DoctorPatientRecords from './pages/doctor/DoctorPatientRecords';
-import DoctorPrescribeMedication from './pages/doctor/DoctorPrescribeMedications'; // ✅ fixed import
+import DoctorPrescribeMedication from './pages/doctor/DoctorPrescribeMedications'; 
+import DoctorLogin from './pages/doctor/DoctorLogin'; 
 
 // Receptionist Pages
 import ReceptionistDashboard from './pages/receptionist/ReceptionistDashboard'; 
 import ReceptionistRegisterPatient from './pages/receptionist/ReceptionRegisterPatient';
 import ReceptionistBookAppointment from './pages/receptionist/ReceptionistBookAppointment';
+import ReceptionistLogin from './pages/receptionist/ReceptionistLogin';
+import ReceptionistPaymentPage from './pages/receptionist/ReceptionistPaymentPage';
 
 // Pharmacist Pages
 import PharmacistDashboard from './pages/pharmacist/PharmacistDashboard';
 import PharmacistManagePrescriptions from './pages/pharmacist/PharmacistManagePrescriptions';
 import PharmacistViewPrescriptionHistory from './pages/pharmacist/PharmacistViewPrescriptionHistory';
 import PharmacistManageInventory from './pages/pharmacist/PharmacistManageInventory';
+import PharmacistLogin from './pages/pharmacist/PharmacistLogin';
 
 function App() {
   return (
     <Routes>
-      {/* Redirect base path to Admin Login */}
-      <Route path="/" element={<Navigate to="/admin/login" replace />} />
-
+      {/* Redirect base path to Landing page */}
+       <Route path="/" element={<LandingPage />} />
+      {/* Redirect base path to Landin page */} 
+      <Route path="/landingpage/citycare" element={<LandingPage />} />
       {/* Admin Routes */}
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -59,6 +68,7 @@ function App() {
       <Route path="/admin/billing" element={<AdminBilling />} />
 
       {/* Patient Routes */}
+      <Route path="/patient/login" element={<PatientLogin />} />
       <Route path="/patient/dashboard" element={<PatientDashboard />} />
       <Route path="/patient/history" element={<PatientAppointmentHistory />} />
       <Route path="/patient/records" element={<PatientMedicalHistory />} />
@@ -69,17 +79,22 @@ function App() {
       <Route path="/doctor/appointments" element={<DoctorManageAppointments />} />
       <Route path="/doctor/records" element={<DoctorPatientRecords />} />
       <Route path="/doctor/prescriptions" element={<DoctorPrescribeMedication />} />
+      <Route path="/doctor/login" element={<DoctorLogin />} />
+      
 
       {/* Receptionist Routes */}
       <Route path="/receptionist/dashboard" element={<ReceptionistDashboard />} />
       <Route path="/receptionist/register" element={<ReceptionistRegisterPatient />} />
       <Route path="/receptionist/book" element={<ReceptionistBookAppointment />} />
+      <Route path="/receptionist/login" element={<ReceptionistLogin />} />
+      <Route path="/receptionist/payments" element={<ReceptionistPaymentPage />} />
 
       {/* Pharmacist Routes */}
       <Route path="/pharmacist/dashboard" element={<PharmacistDashboard />} />
       <Route path="/pharmacist/prescriptions" element={<PharmacistManagePrescriptions />} />
       <Route path="/pharmacist/history" element={<PharmacistViewPrescriptionHistory />} />
       <Route path="/pharmacist/inventory" element={<PharmacistManageInventory />} />
+      <Route path="/pharmacist/login" element={<PharmacistLogin />} />
 
       {/* 404 - Not Found Route */}
       <Route

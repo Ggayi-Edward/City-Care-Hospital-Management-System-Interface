@@ -3,7 +3,7 @@ import { Plus, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AdminSidebar from '../../components/AdminSidebar';
 import AdminTopBar from '../../components/AdminTopbar';
-import DataTable from '../../components/Table';
+import DataTable from '../../components/UserTable';
 import AddUserForm from '../../components/AddUserForm';
 import EditUserForm from '../../components/EditUserForm';
 import DeleteConfirmDialog from '../../components/DeleteConfirmDialogue';
@@ -89,32 +89,12 @@ export default function AdminUserManagement() {
     setIsAddFormOpen(false);
   };
 
-  const filteredRows = users
-    .filter(
-      (user) =>
-        user.name.toLowerCase().includes(search.toLowerCase()) ||
-        user.role.toLowerCase().includes(search.toLowerCase()) ||
-        user.email.toLowerCase().includes(search.toLowerCase())
-    )
-    .map((user) => ({
-      ...user,
-      actions: (
-        <div className="flex gap-2">
-          <button
-            onClick={() => handleEdit(user)}
-            className="text-blue-600 hover:text-blue-800"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => handleDelete(user)}
-            className="text-red-600 hover:text-red-800"
-          >
-            Delete
-          </button>
-        </div>
-      ),
-    }));
+  const filteredRows = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      user.role.toLowerCase().includes(search.toLowerCase()) ||
+      user.email.toLowerCase().includes(search.toLowerCase())
+  );
 
   const columns = [
     { label: 'Name', key: 'name' },
@@ -123,7 +103,7 @@ export default function AdminUserManagement() {
     { label: 'Gender', key: 'gender' },
     { label: 'Date of Birth', key: 'dob' },
     { label: 'Last Active', key: 'lastActive' },
-    { label: 'Actions', key: 'actions' },
+    { label: 'Actions', key: 'actions' }, // required to show action column even if not manually rendered
   ];
 
   return (
@@ -136,7 +116,10 @@ export default function AdminUserManagement() {
         {/* Breadcrumbs */}
         <div className="px-8 pt-4 text-sm text-gray-600">
           <nav className="flex space-x-2 items-center">
-            <button onClick={() => navigate('/admin/dashboard')} className="hover:underline text-blue-600">
+            <button
+              onClick={() => navigate('/admin/dashboard')}
+              className="hover:underline text-blue-600"
+            >
               Admin Dashboard
             </button>
             <span>/</span>
@@ -149,7 +132,10 @@ export default function AdminUserManagement() {
           <div className="flex flex-wrap items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <Search size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                <Search
+                  size={16}
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                />
                 <input
                   type="text"
                   placeholder="Search users"
@@ -158,7 +144,10 @@ export default function AdminUserManagement() {
                   className="border rounded pl-9 pr-3 py-1 text-sm w-64"
                 />
               </div>
-              <button onClick={() => setSearch('')} className="bg-white border px-4 py-1 rounded text-sm">
+              <button
+                onClick={() => setSearch('')}
+                className="bg-white border px-4 py-1 rounded text-sm"
+              >
                 Refresh
               </button>
             </div>
@@ -171,7 +160,12 @@ export default function AdminUserManagement() {
             </button>
           </div>
 
-          <DataTable columns={columns} rows={filteredRows} />
+          <DataTable
+            columns={columns}
+            rows={filteredRows}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         </div>
       </div>
 
@@ -186,10 +180,7 @@ export default function AdminUserManagement() {
 
       {/* Add Form Modal */}
       {isAddFormOpen && (
-        <AddUserForm
-          onSave={handleSaveNew}
-          onCancel={handleCancelAdd}
-        />
+        <AddUserForm onSave={handleSaveNew} onCancel={handleCancelAdd} />
       )}
 
       {/* Delete Confirm Dialog */}

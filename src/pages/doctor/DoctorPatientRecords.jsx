@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import DoctorSidebar from '../../components/DoctorSidebar';
 import DoctorTopbar from '../../components/DoctorTopbar';
 import { Search } from 'lucide-react';
@@ -13,6 +14,7 @@ const patientData = [
 
 export default function DoctorPatientRecords() {
   const [search, setSearch] = useState('');
+  const navigate = useNavigate(); // 
 
   const filteredPatients = patientData.filter(
     (p) =>
@@ -73,7 +75,12 @@ export default function DoctorPatientRecords() {
                     <td className="px-4 py-2">{patient.lastVisit}</td>
                     <td className="px-4 py-2">{patient.diagnosis}</td>
                     <td className="px-4 py-2">
-                      <button className="text-blue-600 hover:underline text-sm">View Record</button>
+                      <button
+                        className="text-blue-600 hover:underline text-sm"
+                        onClick={() => navigate(`/doctor/records/${patient.id}`)} // ✅ Navigate to record page
+                      >
+                        View Record
+                      </button>
                     </td>
                   </tr>
                 ))

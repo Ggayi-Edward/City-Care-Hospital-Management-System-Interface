@@ -25,28 +25,18 @@ export default function AddUserForm({ onSave, onCancel }) {
       return setError('Please fill in all required fields.');
     }
 
-    const newUser = {
-      name: formData.name,
-      role: formData.role,
-      email: formData.email,
-      phone: formData.phone,
-      department: formData.department,
-      gender: formData.gender,
-      dob: formData.dob,
-      status: formData.status,
-    };
-
+    const newUser = { ...formData };
     onSave(newUser);
   };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg h-[90vh] overflow-y-auto p-6">
         <h2 className="text-xl font-semibold mb-4">Add New User</h2>
 
         {error && <div className="text-red-600 mb-3">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 pb-4">
           <div>
             <label className="block text-sm font-medium">Full Name *</label>
             <input
@@ -158,7 +148,7 @@ export default function AddUserForm({ onSave, onCancel }) {
             </button>
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
               Save User
             </button>

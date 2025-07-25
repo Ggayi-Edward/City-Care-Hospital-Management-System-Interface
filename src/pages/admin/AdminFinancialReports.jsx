@@ -51,13 +51,6 @@ export default function AdminFinancialReports() {
                 className="border pl-9 pr-3 py-1 rounded text-sm"
               />
             </div>
-
-            <input
-              type="date"
-              value={fromDate}
-              onChange={(e) => setFromDate(e.target.value)}
-              className="border px-3 py-1 rounded text-sm"
-            />
             <input
               type="date"
               value={toDate}

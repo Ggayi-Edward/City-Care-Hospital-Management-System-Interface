@@ -21,13 +21,6 @@ export default function AdminBilling() {
     { invoiceId: 'INV002', patientName: 'Jane Smith', amount: '$200.00', dateIssued: '2025-06-28', status: 'Paid' },
     { invoiceId: 'INV003', patientName: 'Mark Twain', amount: '$300.00', dateIssued: '2025-06-27', status: 'Overdue' },
     { invoiceId: 'INV004', patientName: 'Emma Brown', amount: '$250.00', dateIssued: '2025-06-26', status: 'Pending' },
-    { invoiceId: 'INV005', patientName: 'Olivia Johnson', amount: '$180.00', dateIssued: '2025-06-25', status: 'Paid' },
-    { invoiceId: 'INV006', patientName: 'James Wilson', amount: '$350.00', dateIssued: '2025-06-24', status: 'Overdue' },
-    { invoiceId: 'INV007', patientName: 'William Davis', amount: '$120.00', dateIssued: '2025-06-23', status: 'Pending' },
-    { invoiceId: 'INV008', patientName: 'Isabella Garcia', amount: '$220.00', dateIssued: '2025-06-22', status: 'Paid' },
-    { invoiceId: 'INV009', patientName: 'Lucas Martinez', amount: '$140.00', dateIssued: '2025-06-21', status: 'Pending' },
-    { invoiceId: 'INV010', patientName: 'Sophia Lee', amount: '$90.00', dateIssued: '2025-06-20', status: 'Overdue' },
-    { invoiceId: 'INV011', patientName: 'Elijah Brown', amount: '$180.00', dateIssued: '2025-06-19', status: 'Paid' },
   ];
 
   const statusColorMap = {
@@ -58,7 +51,7 @@ export default function AdminBilling() {
           <div className="flex flex-wrap items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <input type="date" className="border rounded px-3 py-1 text-sm" />
-              <input type="date" className="border rounded px-3 py-1 text-sm" />
+              
               <select className="border rounded px-3 py-1 text-sm">
                 <option value="">All Statuses</option>
                 <option value="Paid">Paid</option>
